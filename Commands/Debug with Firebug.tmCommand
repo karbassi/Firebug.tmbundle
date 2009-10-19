@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>###	Debug with Firebug
+###	Adapted from "Refresh All Active Browsers"
+### v1.0 2007-03-30
+###
+
+# Check if Firefox is running, if so refresh
+ps -xc|grep -sqi firefox &amp;&amp; osascript &lt;&lt;'APPLESCRIPT'
+   tell app "Firefox" to activate
+   tell app "System Events"
+      if UI elements enabled then
+         keystroke "l" using {command down, shift down}
+         keystroke "r" using command down
+         -- Fails if System Preferences &gt; Universal access &gt; "Enable access for assistive devices" is not on 
+      end if
+   end tell
+APPLESCRIPT</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@D</string>
+	<key>name</key>
+	<string>Debug with Firebug</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>text.html, source.js</string>
+	<key>uuid</key>
+	<string>FE9FE093-8B7A-4693-9B85-34914EF2B0A9</string>
+</dict>
+</plist>
